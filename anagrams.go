@@ -18,15 +18,15 @@ func SortString(str string) []string {
 }
 
 func Solve(dic string, str string) string{
-	ofset := 0
+	offset := 0
 	pos := 0
 	dic_sort := SortString(dic)
 	for _, v := range dic_sort[1:] {
-		pos = strings.Index(str[ofset:], v)
+		pos = strings.Index(str[offset:], v)
 		if pos < 0 {
 			return "";
 		}
-		ofset = pos + ofset + 1
+		offset = pos + offset + 1
 	}
 	if len(dic) > len(ans){
 		ans = dic
