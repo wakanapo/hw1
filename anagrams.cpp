@@ -43,7 +43,7 @@
 using namespace std;
 string ans;
 
-string contains(string dic, string str) {
+string solve(string dic, string str) {
   string dic_sort = dic;
   transform (dic_sort.begin(), dic_sort.end(), dic_sort.begin(), ::tolower);
   sort(dic_sort.begin(), dic_sort.end());
@@ -66,7 +66,7 @@ int main() {
     return -1;
   }
   while (getline(ifs, dic)) {
-    contains(dic, str);
+    solve(dic, str);
   }
   cout << ans << endl;
   return 0;
