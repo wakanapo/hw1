@@ -20,8 +20,8 @@ func SortString(str string) []string {
 func Solve(dic string, str string) string{
 	offset := 0
 	pos := 0
-	dic_sort := SortString(dic)
-	for _, v := range dic_sort[1:] {
+	dic_sort := SortString(strings.TrimSpace(dic))
+	for _, v := range dic_sort {
 		pos = strings.Index(str[offset:], v)
 		if pos < 0 {
 			return "";
