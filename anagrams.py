@@ -47,11 +47,11 @@ def solve(data, dic):
         offset = pos + offset + 1
     return dic
 
-maxlen = ''
+maxstr = ''
 s = input()
 sSort = ''.join(sorted(s.lower()))
 with open('/usr/share/dict/words') as f:
         for line in f.readlines():
             ans = solve(sSort, line)
-            if len(ans) > len(maxlen): maxlen = ans
-print(maxlen)
+            if len(ans) > len(maxstr): maxlen = ans
+print(maxstr)
