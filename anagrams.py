@@ -38,12 +38,12 @@
 
 def solve(data, dic):
     dSort = ''.join(sorted(dic.lower()))
-    dIter = iter(dSort[1:])
     pos = 0
     offset = 0
-    for w in dIter:
+    for w in iter(dSort):
         pos = data[offset:].find(w) 
-        if pos == -1: return ''
+        if pos == -1:
+            return ''
         offset = pos + offset + 1
     return dic
 
@@ -52,6 +52,7 @@ s = input()
 sSort = ''.join(sorted(s.lower()))
 with open('/usr/share/dict/words') as f:
         for line in f.readlines():
-            ans = solve(sSort, line)
-            if len(ans) > len(maxstr): maxlen = ans
+            ans = solve(sSort, line.rstrip())
+            if len(ans) > len(maxstr):
+                maxstr = ans
 print(maxstr)
