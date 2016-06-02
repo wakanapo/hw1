@@ -35,23 +35,23 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
-str = STDIN.gets.chomp.downcase.chars.sort.join
+
+def is_anagram(str, target)
+  target_sort = target.chomp.downcase.chars.sort
+  offset = -1
+  target_sort.each do |char|
+    offset = str.index(char, offset+1)
+    return false if offset == nil
+  end
+  return true
+end
 
 begin
+  str = STDIN.gets.chomp.downcase.chars.sort.join
   File.open('/usr/share/dict/words') do |file|
     ans = ''
     file.each_line do |dic|
-      dic_sort = dic.chomp.downcase.chars.sort
-      offset = -1
-      dic_sort.each do |char|
-        offset = str.index(char, offset+1)
-        if offset == nil then
-          break
-        end
-      end
-      if offset != nil then
-        ans = dic.length > ans.length ? dic : ans
-      end
+      ans = dic if (is_anagram(str, dic) && dic.length > ans.length)
     end
     puts ans
   end
